@@ -4,27 +4,32 @@ var quotes = [
         quote: "You can do anything but not everything.",
         source: "David Allen",
         citation: "Making It All Work",
-        year: 2009
+        year: 2009,
+        tags: ["business", "general"]
     },
     {
         quote: "You can question somebody's views and their judgement without questioning their motives or patriotism.",
         source: "Barack Obama",
         citation: "University of Michigan Commencement",
-        year: 2010
+        year: 2010,
+        tags: ["business", "politics", "general"]
     },
     {
         quote: "For three days after death hair and fingernails continue to grow but phone calls taper off.",
         source: "Johnny Carson",
+        tags: ["politics", "general", "humor"]
     },
     {
         quote: "The frangrance always remains in the hand that gives the rose.",
         source: "Heda Bejar",
+        tags: ["general"]
     },
     {
         quote: "Fear of a name increases fear of the thing itself.",
         source: "J. K. Rowling",
         citation: "Harry Potter and the Sorcerer's Stone",
-        year: 1997
+        year: 1997,
+        tags: ["general", "business", "politics"]
     }
 ];
 
@@ -53,7 +58,13 @@ function printQuote() {
         html += '<span class="year">' + quote.year + '</span>';
     }
     
-    html += '</p>';
+    html += '</p><ul class="tags">';
+    for (var i = 0; i < quote.tags.length; i++){
+        html += '<li>' + quote.tags[i] + '</li>';
+    }
+    html += '</ul>';
+    
+    
     document.getElementById('quote-box').innerHTML = html;
     
 }
