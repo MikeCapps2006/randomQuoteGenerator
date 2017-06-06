@@ -35,15 +35,19 @@ var quotes = [
 
 // Color array for random background color
 var colors = ['#33FFBD', '#C0392B', '#F4D03F', '#17202A', '#154360', '#A569BD', '#3498DB'];
+
+// Array for keeping track of what quotes are displayed
+var noRepeat = [];
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.addEventListener('DOMContentLoaded', printQuote, false);
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-
+var intervalID = window.setInterval(printQuote, 30000);
 
 // Prints the random quote from the getRandomQuote function to the quote box
 function printQuote() {
+    clearInterval(intervalID);
     var quote = getRandomQuote();
     var color = getRandomColor();
     document.body.style.backgroundColor = color;
@@ -66,6 +70,9 @@ function printQuote() {
     
     
     document.getElementById('quote-box').innerHTML = html;
+    console.log(quote.quote);
+    
+    intervalID = window.setInterval(printQuote, 30000);
     
 }
 
@@ -73,8 +80,24 @@ function printQuote() {
 function getRandomQuote() {
     
     var len = quotes.length;
+    var exitVar = true;
     var random = (Math.round(Math.random() * (len - 1)));
-    return quotes[random];
+    var quote = quotes[random];
+    if (noRepeat.length != quotes.length){
+        while (exitVar) {
+            if(!noRepeat.includes(quote)){
+                noRepeat.push(quote);
+                return quote;
+            } else {
+                random = (Math.round(Math.random() * (len - 1)));
+                quote = quotes[random];
+                continue;
+            }
+            exitVar = false;
+        }
+    }
+    
+    return quote;
     
     
 }
