@@ -38,11 +38,13 @@ var colors = ['#33FFBD', '#C0392B', '#F4D03F', '#17202A', '#154360', '#A569BD', 
 
 // Array for keeping track of what quotes are displayed
 var noRepeat = [];
+
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.addEventListener('DOMContentLoaded', printQuote, false);
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
+// Used to set 30 second timer for quotes to switch
 var intervalID = window.setInterval(printQuote, 30000);
 
 // Prints the random quote from the getRandomQuote function to the quote box
