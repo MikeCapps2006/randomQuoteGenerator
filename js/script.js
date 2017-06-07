@@ -30,6 +30,11 @@ var quotes = [
         citation: "Harry Potter and the Sorcerer's Stone",
         year: 1997,
         tags: ["general", "business", "politics"]
+    },
+    {
+        quote: "The people who are crazy enough to think they can change the world are the ones who do.",
+        source: "Steve Jobs",
+        tags: ["general", "business", "humor"]
     }
 ];
 
